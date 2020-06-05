@@ -1,0 +1,137 @@
+<div *ngIf="mySubmissionForms != null">
+
+    <div *ngIf="myFormSelected < 0" class="list-group">
+        <div *ngFor="let item of mySubmissionForms.SubForms; let i = index">
+            <a (click)="selectForm(i)" class="list-group-item list-group-item-action list-group-item-secondary ">
+                Submission ID: {{item.formID}}  Status: {{item.status}}
+            </a>
+        </div>
+    </div>
+
+    <div *ngIf="myFormSelected >= 0">
+
+        <div class="row my-row1">
+            <div class="col my-col1">
+                <div class="interface-content">
+                    <div id="my-form1">
+                        <div class="row justify-content-center">
+                            <div class="col-4">
+                                <div>Submission ID: {{this.mySubmissionForms.SubForms[myFormSelected].formID}}</div>
+                            </div>
+                        </div>
+                        <label class="col-sm-2 col-form-label">Name</label>
+                        <input class="form-control" type="text"
+                            placeholder="{{this.mySubmissionForms.SubForms[myFormSelected].firstName}} {{this.mySubmissionForms.SubForms[myFormSelected].lastName}}"
+                            readonly>
+
+                        <label class="col-sm-2 col-form-label">Email</label>
+                        <input class="form-control" type="text"
+                            placeholder="{{this.mySubmissionForms.SubForms[myFormSelected].email}}" readonly>
+
+                        <label class="col-sm-2 col-form-label">Phone</label>
+                        <input class="form-control" type="text"
+                            placeholder="{{this.mySubmissionForms.SubForms[myFormSelected].phone}}" readonly>
+
+                        <label class="col-sm-2 col-form-label">Address</label>
+                        <input class="form-control" type="text"
+                            placeholder="{{this.mySubmissionForms.SubForms[myFormSelected].address}}" readonly>
+
+                        <label class="col-sm-2 col-form-label">Address 2</label>
+                        <input class="form-control" type="text"
+                            placeholder="{{this.mySubmissionForms.SubForms[myFormSelected].addressTwo}}" readonly>
+
+                        <label class="col-sm-2 col-form-label">City</label>
+                        <input class="form-control" type="text"
+                            placeholder="{{this.mySubmissionForms.SubForms[myFormSelected].city}}" readonly>
+
+                        <label class="col-sm-2 col-form-label">State</label>
+                        <input class="form-control" type="text"
+                            placeholder="{{this.mySubmissionForms.SubForms[myFormSelected].state}}" readonly>
+
+                        <label class="col-sm-2 col-form-label">Zip</label>
+                        <input class="form-control" type="text"
+                            placeholder="{{this.mySubmissionForms.SubForms[myFormSelected].zip}}" readonly>
+
+                        <label class="col-sm-2 col-form-label">Submission Date</label>
+                        <input class="form-control" type="text"
+                            placeholder="{{this.mySubmissionForms.SubForms[myFormSelected].submissionDate}}" readonly>
+
+                        <label class="col-sm-2 col-form-label">Event Date</label>
+                        <input class="form-control" type="text"
+                            placeholder="{{this.mySubmissionForms.SubForms[myFormSelected].eventDate}}" readonly>
+
+                        <label class="col-sm-2 col-form-label">Event Location</label>
+                        <input class="form-control" type="text"
+                            placeholder="{{this.mySubmissionForms.SubForms[myFormSelected].eventLocation}}" readonly>
+
+                        <label class="col-sm-2 col-form-label">Event Discription</label>
+                        <input class="form-control" type="text"
+                            placeholder="{{this.mySubmissionForms.SubForms[myFormSelected].eventDiscription}}" readonly>
+
+                        <label class="col-sm-2 col-form-label">Event Cost</label>
+                        <input class="form-control" type="text"
+                            placeholder="{{this.mySubmissionForms.SubForms[myFormSelected].eventCost}}" readonly>
+
+                        <label class="col-sm-2 col-form-label">Grading Format</label>
+                        <input class="form-control" type="text"
+                            placeholder="{{this.mySubmissionForms.SubForms[myFormSelected].gradingFormat}}" readonly>
+
+                        <label class="col-sm-2 col-form-label">Cutoff Grade</label>
+                        <input class="form-control" type="text"
+                            placeholder="{{this.mySubmissionForms.SubForms[myFormSelected].cutOffGrade}}" readonly>
+
+                        <label class="col-sm-2 col-form-label">Event Type</label>
+                        <input class="form-control" type="text"
+                            placeholder="{{this.mySubmissionForms.SubForms[myFormSelected].eventType}}" readonly>
+
+                        <label class="col-sm-2 col-form-label">Justification</label>
+                        <input class="form-control" type="text"
+                            placeholder="{{this.mySubmissionForms.SubForms[myFormSelected].justification}}" readonly>
+
+                        <label class="col-sm-2 col-form-label">Expected Work Time Missed</label>
+                        <input class="form-control" type="text"
+                            placeholder="{{this.mySubmissionForms.SubForms[myFormSelected].workTimeOff}}" readonly>
+
+                        <label class="col-sm-2 col-form-label">Additional Comments</label>
+                        <input class="form-control" type="text"
+                            placeholder="{{this.mySubmissionForms.SubForms[myFormSelected].optionalComments}}" readonly>
+
+                        <label class="col-sm-2 col-form-label">File Downloads</label>
+                        <div class="list-group">
+                            <div
+                                *ngFor="let item of this.mySubmissionForms.SubForms[myFormSelected].fileID; let j = index">
+
+                                <a (click)="downloadSelectedFile(item, this.mySubmissionForms.SubForms[myFormSelected].fileName[j])"
+                                    class="list-group-item list-group-item-action list-group-item-info">
+                                    FILE ID: {{item}} FILE NAME:
+                                    {{this.mySubmissionForms.SubForms[myFormSelected].fileName[j]}}
+                                </a>
+
+                            </div>
+                        </div>
+
+                        <label class="col-sm-2 col-form-label">Messages:</label>
+                        <div class="list-group">
+                            <div
+                                *ngFor="let item of this.mySubmissionForms.SubForms[myFormSelected].messages; let k = index">
+                                <input class="form-control" type="text" placeholder="{{item}}" readonly>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comment">Add Message:</label>
+                            <textarea [(ngModel)]="messageToAdd" name="comment" class="form-control" rows="3"
+                                id="comment"></textarea>
+                        </div>
+                        <button (click)="uploadMessage()" class="btn btn-primary">Send Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>

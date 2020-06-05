@@ -1,0 +1,15 @@
+#mycontainer{
+    height: 100vh;
+    width: 100vw;
+    padding: 0px;
+    background: url("src\assets\images\white-blank-notebook-733857.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+
+
+

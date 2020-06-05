@@ -1,0 +1,12 @@
+
+
+.my-row1{
+    height: calc( 100% - 4rem );
+}
+
+
+#message{
+   
+        font-size: 75px;
+      
+}

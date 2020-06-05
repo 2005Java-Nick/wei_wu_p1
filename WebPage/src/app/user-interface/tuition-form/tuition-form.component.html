@@ -1,0 +1,169 @@
+<div class="row my-row1">
+    <div class="col my-col1">
+        <div class="interface-content">
+            <form id="my-form1">
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <div>Tuition Reimbursement Form</div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <input [(ngModel)]="tuitionForm.firstName" name="FirstNameInput" type="text" class="form-control" id="FirstNameInput" placeholder="First Name" readonly>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <input [(ngModel)]="tuitionForm.midName" name="MidNameInput" type="text" class="form-control" id="MidNameInput" placeholder="Middle Name" readonly>
+                    </div>
+                    <div class="form-group col-md-5">
+                        <input [(ngModel)]="tuitionForm.lastName" name="LastNameInput" type="text" class="form-control" id="LastNameInput" placeholder="Last Name" readonly>
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <input [(ngModel)]="tuitionForm.address" name="AddressInput" type="text" class="form-control" id="AddressInput" placeholder="Address" readonly>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <input [(ngModel)]="tuitionForm.addressTwo" name="AddressInput2" type="text" class="form-control" id="AddressInput2" placeholder="Apartment, studio, or floor" readonly>
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input [(ngModel)]="tuitionForm.city" name="InputCity" type="text" class="form-control" id="InputCity" placeholder="City" readonly>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <input [(ngModel)]="tuitionForm.state" name="InputState" type="text" class="form-control" id="InputState" placeholder="State" readonly>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <input [(ngModel)]="tuitionForm.zip" name="InputZip" type="text" class="form-control" id="InputZip" placeholder="Zip" readonly>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-2">
+                        <div>Event Info</div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <input [(ngModel)]="tuitionForm.eventLocation" name="EventLocationInput" type="text" class="form-control" id="EventLocationInput" placeholder="Event Location">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <input [(ngModel)]="tuitionForm.eventDiscription" name="EventDiscriptionInput" type="text" class="form-control" id="EventDiscriptionInput" placeholder="Event Discription">
+                    </div>
+                </div>
+
+                <div class="form-row">          
+                    <div class="form-group col-md-2">
+                        <input [(ngModel)]="tuitionForm.eventCost" (change)="calProjected()" name="EventCostInput" type="number" class="form-control" id="EventCostInput" placeholder="Event Cost">
+                    </div>
+                    <div class="form-group">
+                        <select (change)="onEventType($event.target.value); calProjected()" class="form-control" id="exampleFormControlSelect1">
+                          <option [value] = "30">Event Type (Default 30%)</option>
+                          <option [value] = "80">University Courses 80%</option>
+                          <option [value] = "60">Seminars 60%</option>
+                          <option [value] = "75">Certification Preparation Classes 75%</option>
+                          <option [value] = "100">Certification 100%</option>
+                          <option [value] = "90">Technical Training 90%</option>
+                          <option [value] = "30">Other 30%</option>
+                        </select>
+                      </div>
+                    <div class="form-group col-md-8">
+                        <input [(ngModel)]="tuitionForm.justification" name="JustificationInput" type="text" class="form-control" id="JustificationInput" placeholder="Justification">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <input [(ngModel)]="tuitionForm.workTimeOff" name="WorkTimeMissInput" type="text" class="form-control" id="WorkTimeMissInput" placeholder="Expected Work Time Missed">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <input [(ngModel)]="tuitionForm.gradingFormat" name="GradingFormatInput" type="text" class="form-control" id="GradingFormatInput" placeholder="Grading Format">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <input [(ngModel)]="tuitionForm.cutOffGrade" name="CutOffGradeInput" type="text" class="form-control" id="CutOffGradeInput" placeholder="Cutoff Grade">
+                    </div>
+
+                    <div class="form-group col-md-5">
+                    <div class="form-inline">
+                        <div class="form-group">
+                          <div class="input-group">
+                            <input [style.border-color]="datePickerColor" name="dateInput" id="datePicker" class="form-control" placeholder="Event Date: yyyy-mm-dd"
+                                   name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" [minDate]="minDate">
+                            <div class="input-group-append">
+                              <button (click)="onPickedDate()" class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button" id="calendar-btn"></button>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="form-row">          
+                    <div class="form-group col-md-2">
+                        <label for="reimbursementAvaliable">Reimbursement Avaliable:</label> <input [(ngModel)]="tuitionForm.reimbursementAvaliable - tuitionForm.reimbursementPending" name="reimbursementAvaliable" type="number" class="form-control" id="reimbursementAvaliable" placeholder="Reimbursement Avaliable" readonly>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="reimbursementPending">Reimbursement Pending:</label> <input [(ngModel)]="tuitionForm.reimbursementPending" name="reimbursementPending" type="number" class="form-control" id="reimbursementPending" placeholder="Reimbursement Pending" readonly>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label for="reimbursementProjected">Projected Reimbursement:</label> <input [(ngModel)]="projectedAmount" name="reimbursementProjected" type="number" class="form-control" id="reimbursementProjected" placeholder="Reimbursement Projected" readonly>
+                    </div>
+                </div>
+                
+                    <div class="form-group">
+                      <label for="comment">Comment:</label>
+                      <textarea [(ngModel)]="tuitionForm.optionalComments" name="comment" class="form-control" rows="3" id="comment"></textarea>
+                    </div>
+                  
+                
+                    <div class="form-group">
+                      <label for="exampleFormControlFile1">Example file input</label>
+                      <input type="file" (change)="onFileSelected($event)" class="form-control-file" id="exampleFormControlFile1">
+                    </div>
+
+                    <table>
+                        <thead>
+                        <tr>
+                          <th width="80%">
+                            File Name
+                          </th>
+                          <th width="10%">
+                            Size
+                          </th>
+                          <th width="10%">
+                            Remove
+                          </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let item of files; let i = index">
+                          <th width="80%">
+                           {{item.name}}
+                          </th>
+                          <th width="10%">
+                            {{(item.size/(1024*1024)).toFixed(2)}} MB
+                          </th>
+                          <th class="text-center" width="10%">
+
+                            <button (click)="removeFileAt(i)" mat-raised-button color="accent">
+                            <mat-icon>delete</mat-icon>
+                            </button>
+
+                          </th>
+                        </tr>
+                        </tbody>
+                      </table>
+               
+                <button (click)="onClick()" [disabled]="!model" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

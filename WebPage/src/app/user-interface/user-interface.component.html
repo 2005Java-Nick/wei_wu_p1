@@ -1,0 +1,16 @@
+<button (click)="onHomeClick()" type="button" class="btn btn-primary">home</button>
+<button (click)="onFormClick()" type="button" class="btn btn-primary">Form</button>
+<button (click)="onMySubmissionsClick()" type="button" class="btn btn-primary">My Submissions</button>
+<button (click)="onAdminClick()" type="button" class="btn btn-primary">Admin</button>
+<ng-template [ngIf]="homepage">
+    <app-home-page></app-home-page>
+</ng-template>
+<ng-template [ngIf]="formpage">
+    <app-tuition-form></app-tuition-form>
+</ng-template>
+<ng-template [ngIf]="mysubmissions">
+    <app-my-submissions></app-my-submissions>
+</ng-template>
+<ng-template [ngIf]="admin">
+    <app-admin-interface></app-admin-interface>
+</ng-template>
